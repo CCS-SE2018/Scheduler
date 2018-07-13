@@ -17,7 +17,7 @@
                         <!-- <li><a href="/assessment"><i class="md md-check"></i>Assessment</a></li> -->
                         <li><a href="/userProfile/{{Auth::user()->id}}"><i class="md md-person"></i>User Profile</a></li>
                         <li>
-                            <a href="/logout">
+                            <a href="{{url('/logout')}}">
                                 <i class="md md-settings-power"></i>Logout
                             </a>
                         </li>
