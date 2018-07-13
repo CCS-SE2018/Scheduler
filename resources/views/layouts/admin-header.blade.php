@@ -8,9 +8,8 @@
 
 
         <title>CIA Admin Page</title>
-        {!! HTML::style('public/back-end/css/bootstrap.min.css') !!}
         <!-- Base Css Files -->
-        <!-- <link href="../public/back-end/css/bootstrap.min.css" rel="stylesheet" /> -->
+        <link href="public/back-end/css/bootstrap.min.css" rel="stylesheet" />
 
         <!-- Font Icons -->
         <link href="public/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />

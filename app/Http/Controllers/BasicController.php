@@ -33,7 +33,6 @@ class BasicController extends Controller
         $this->validate(request(), [
             'instructor' => 'required',
             'username' => 'required',
-            'email' => 'required|email',
             'password' => 'required|confirmed',
         ]);
         // Create and Save the user
@@ -42,7 +41,6 @@ class BasicController extends Controller
         $user = User::create([
             'instructor' => request('instructor'),
             'username' => request('username'),
-            'email' => request('email'),
             'password' => bcrypt(request('password'))
         ]);
 
