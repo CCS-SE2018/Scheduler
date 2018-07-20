@@ -1,8 +1,8 @@
 <!-- ========== Left Sidebar Start ========== -->
 <?php
-    $urls = ["/dashboard","/subject","/day","/time","/section","/room"];
-    $classes = ["md md-home","md md-my-library-books","md md-brightness-high","md md-alarm","md md-local-library","md md-room"];
-    $desc = ["Dashboard","Subjects","Day","Time","Section","Room"];
+    $urls = ["/","/subject","/day","/time","/section","/teachers","/archive"];
+    $classes = ["md md-home","md md-my-library-books","md md-brightness-high","md md-alarm","md md-local-library","md md-face-unlock"," md-my-library-books"];
+    $desc = ["Dashboard","Subjects","Day","Time","Section","Teachers","Archive"];
 ?>
 <div class="left side-menu">
     <div class="sidebar-inner slimscrollleft">
@@ -29,7 +29,7 @@
         <!--- Divider -->
         <div id="sidebar-menu">
             <ul>
-                <?php $i; for($i = 0;$i < 6;$i++){ ?>
+                <?php $i; for($i = 0;$i < 7;$i++){ ?>
                   <li><a href="<?=url($urls[$i]);?>" class="waves-effect"><i class="<?=$classes[$i];?>"></i><span> <?=$desc[$i];?> </span></a></li>
                 <?php }?>
             </ul>

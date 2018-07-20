@@ -62,17 +62,21 @@
     <script src="public/assets/datatables/dataTables.bootstrap.js"></script>
     <script src="public/assets/jquery-datatables-editable/datatables.editable.init.js"></script>
 
+    <script src="public/js/jquery-ui-1.10.1.custom.min.js"></script>
+    <script src="public/assets/select2/select2.min.js" type="text/javascript"></script>
+
     <?php
 
     $url = $_SERVER['REQUEST_URI'];
     $arr = explode("/",$url);
     $page = $arr[count($arr)-1];
 
-    if($page == 'dashboard'){
+    if($page == 'schedules'){
 ?>
-    <!-- Chart JS -->
-    <script src="public/assets/chartjs/chart.min.js"></script>
-    <script src="public/assets/chartjs/chartjs.init.js"></script>
+    <!-- BEGIN PAGE SCRIPTS -->
+    <script src='public/assets/fullcalendar/moment.min.js'></script>
+    <script src='public/assets/fullcalendar/fullcalendar.min.js'></script>
+    <script src="public/assets/fullcalendar/fullcalendar.js"></script>
 <?php
     }
 ?>

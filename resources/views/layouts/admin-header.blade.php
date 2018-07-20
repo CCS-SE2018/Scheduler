@@ -37,6 +37,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
+        <!--calendar css-->
+        <link href="public/assets/fullcalendar/fullcalendar.css" rel="stylesheet" />
+        <link href="public/assets/select2/select2.css" rel="stylesheet" type="text/css" />
+
         <script src="public/back-end/js/modernizr.min.js"></script>
 
     </head>

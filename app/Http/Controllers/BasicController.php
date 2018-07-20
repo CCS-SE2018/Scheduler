@@ -13,9 +13,9 @@ class BasicController extends Controller
     }
     public function check(){
         if(Auth::check())
-          return view('admin.home');
+          return redirect('/dashboard');
         else
-          return view('admin.login');
+          return redirect('/login');
     }
 
     public function signIn(){
@@ -25,32 +25,32 @@ class BasicController extends Controller
         ]);
       }
 
-      return redirect('/');
+      return redirect('/dashboard');
     }
 
-    public function store() {
-        // Validate the form
-        $this->validate(request(), [
-            'instructor' => 'required',
-            'username' => 'required',
-            'password' => 'required|confirmed',
-        ]);
-        // Create and Save the user
-
-        // Your fixed
-        $user = User::create([
-            'instructor' => request('instructor'),
-            'username' => request('username'),
-            'password' => bcrypt(request('password'))
-        ]);
-
-        // Optional. Sign them in after registration
-
-        auth()->login($user);
-
-        // Redirect to the homepage
-        return redirect('/');
-    }
+    // public function store() {
+    //     // Validate the form
+    //     $this->validate(request(), [
+    //         'instructor' => 'required',
+    //         'username' => 'required',
+    //         'password' => 'required|confirmed',
+    //     ]);
+    //     // Create and Save the user
+    //
+    //     // Your fixed
+    //     $user = User::create([
+    //         'instructor' => request('instructor'),
+    //         'username' => request('username'),
+    //         'password' => bcrypt(request('password'))
+    //     ]);
+    //
+    //     // Optional. Sign them in after registration
+    //
+    //     auth()->login($user);
+    //
+    //     // Redirect to the homepage
+    //     return redirect('/');
+    // }
 
     public function logout(){
         auth()->logout();

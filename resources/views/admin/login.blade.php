@@ -9,7 +9,7 @@
 
 
         <div class="panel-body">
-        <form class="form-horizontal m-t-20" method="POST" action="/login">
+        <form class="form-horizontal m-t-20" method="POST" action="{{url('/signin')}}">
             {{ csrf_field() }}
             <div class="form-group">
                 <div class="col-xs-12">
@@ -30,11 +30,11 @@
                 </div>
             </div>
 
-            <div class="form-group m-t-30">
+            <!-- <div class="form-group m-t-30">
                 <div class="col-sm-12 text-center">
                     <a href="{{url('/register')}}">Create an account</a>
                 </div>
-            </div>
+            </div> -->
 
             @include('layouts.errors')
         </form>
