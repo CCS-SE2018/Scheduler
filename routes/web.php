@@ -23,6 +23,4 @@ Route::get('/subject','SubjectController@show');
 Route::get('/time','TimeController@showTime');
 Route::get('/rooms','RoomController@show');
 Route::get('/section','SectionController@show');
-Route::get('/teachers',function(){
-  return view('admin.teachers');
-});
+Route::get('/teachers','TeachersController@show');

@@ -228,35 +228,20 @@
 				} else {
 					$this.html('<form enctype="multipart/form-data">');
 					$this.html('<input type="hidden" name="_token" value="{{ csrf_token() }}">');
-					if(page=='users'){
-						if(i==0){
-							if(data[0] == '')
-								$this.html('<img class="avatar" src="../img/uploads/default.jpg">');
-							else
-								$this.html(data[i]);
-						}
-						else if(i==1){
-							$this.html( '<select id="'+tables[0][0]+'" name="usertype" class="form-control input-block">'+
-								'<option value="admin">admin</option>'+
-								'<option value="user">user</option>'+
-								'</select>' );
-						}
-						else if(i==4){
-							$this.html( '<input id="'+tables[0][3]+'" type="password" class="form-control input-block" value="' + data[i] + '"/>' );
-						}
-						else if(i==6)
-							$this.html( '<input type="text" readonly class="form-control input-block" value="' + data[i] + '"/>' );
-						else{
-							$this.html( '<input id="'+tables[0][i-1]+'"type="text" class="form-control input-block" value="' + data[i] + '"/>' );
-						}
+					if(page=='rooms'){
+						$this.html( '<input type="text" id="rooms" placeholder="Enter room." class="form-control input-block value="'+data[0]+'">'+data[0]);
 					}
-					else if(page=='colleges'){
-						if(i==2){
-							var text = data[2].replace(/(<([^>]+)>)/ig,"");
-							$this.html( '<textarea id="'+tables[1][2]+'" class="form-control input-block value="'+text+'">'+text+'</textarea>' );
+					else if(page=='teachers'){
+						if(i==0){
+								if(i==0){
+									if(data[0] == '')
+										$this.html('<img class="avatar" src="../img/uploads/default.jpg">');
+									else
+										$this.html(data[i]);
+								}
 						}
 						else
-							$this.html( '<textarea id="'+tables[1][i]+'"class="form-control input-block value="'+data[i]+'">'+data[i]+'</textarea>' );
+							$this.html( '<input type="text" id="rooms" placeholder="Enter name." class="form-control input-block value="'+data[i]+'">'+data[i]);
 					}
 					else if(page=='questions'){
 						var text = data[i].replace(/[^a-zA-Z ]/g, "")
@@ -350,7 +335,10 @@
 					postType:'json',
 					type:'post',
 					data:{'userID':objID,'page':page,'values':values.toArray(),'avatar':'default.jpg'},
-					success:function(data){},
+					success:function(data){
+						// console.log('Been here!');
+						// return false;
+					},
 					async:false
 				});
 

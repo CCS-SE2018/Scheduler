@@ -106,18 +106,23 @@
                                     <form role="form">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label class="control-label">Category Name</label>
-                                                <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name"/>
+                                                <label class="control-label">Subject Name</label>
+                                                <input class="form-control form-white" id="" placeholder="Enter name" type="text" name="category-name"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="control-label">No. of Sections</label>
+                                                <input class="form-control form-white" id="" placeholder="Enter number" type="text" name="category-name"/>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="control-label">Choose Category Color</label>
-                                                <select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
-                                                    <option value="success">Success</option>
-                                                    <option value="danger">Danger</option>
-                                                    <option value="primary">Primary</option>
-                                                    <option value="warning">Warning</option>
-                                                    <option value="inverse">Inverse</option>
+                                                <label class="control-label">Subject Type</label>
+                                                <select class="form-control form-white" id="" data-placeholder="Select Type" name="category-color">
+                                                    <option value="success">Lecture</option>
+                                                    <option value="danger">Lecture and Laboratory</option>
                                                 </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="control-label">Year Level</label>
+                                                <input class="form-control form-white" id="" placeholder="Enter year level" type="text" name="category-name"/>
                                             </div>
                                         </div>
                                     </form>

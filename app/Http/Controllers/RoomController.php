@@ -8,6 +8,7 @@ use App\Room;
 class RoomController extends Controller
 {
     public function show(){
-      return view('admin.rooms');
+      $rooms = Room::all();
+      return view('admin.rooms',compact('rooms'));
     }
 }
