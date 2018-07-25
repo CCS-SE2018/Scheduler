@@ -21,6 +21,8 @@ Route::get('/logout', function(){
 });
 Route::get('/subject','SubjectController@show');
 Route::get('/time','TimeController@showTime');
-Route::get('/day','DayController@showDay');
+Route::get('/rooms','RoomController@show');
 Route::get('/section','SectionController@show');
-Route::get('/teachers','RoomController@show');
+Route::get('/teachers',function(){
+  return view('admin.teachers');
+});

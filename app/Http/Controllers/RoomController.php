@@ -8,6 +8,6 @@ use App\Room;
 class RoomController extends Controller
 {
     public function show(){
-      return view('admin.teachers');
+      return view('admin.rooms');
     }
 }
