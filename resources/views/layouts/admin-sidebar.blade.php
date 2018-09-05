@@ -7,15 +7,10 @@
 <div class="left side-menu">
     <div class="sidebar-inner slimscrollleft">
         <div class="user-details">
-            <div class="pull-left">
-                <img src="/img/uploads/{{Auth::user()->avatar}}" alt="" class="thumb-md img-circle">
-            </div>
             <div class="user-info">
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{Auth::user()->instructor}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <!-- <li><a href="/assessment"><i class="md md-check"></i>Assessment</a></li> -->
-                        <li><a href="/userProfile/{{Auth::user()->id}}"><i class="md md-person"></i>User Profile</a></li>
                         <li>
                             <a href="{{url('/logout')}}">
                                 <i class="md md-settings-power"></i>Logout

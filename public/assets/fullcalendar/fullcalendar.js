@@ -1,14 +1,9 @@
-/**
-* Theme: Montran Admin Template
-* Author: Coderthemes
-* Component: Full-Calendar
-*
-*/
-
-
-
-
 !function($) {
+  $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+    });
     "use strict";
 
     var CalendarApp = function() {
@@ -16,7 +11,7 @@
         this.$modal = $('#event-modal'),
         this.$event = ('#external-events div.external-event'),
         this.$calendar = $('#calendar'),
-        this.$saveCategoryBtn = $('.save-category'),
+        this.$saveCategoryBtn = $('.addSubject'),
         this.$categoryForm = $('#add-category form'),
         this.$extEvents = $('#external-events'),
         this.$calendarObj = null
@@ -130,42 +125,35 @@
     CalendarApp.prototype.init = function() {
         this.enableDrag();
         /*  Initialize the calendar  */
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
+        // var date = new Date();
+        // var d = date.getDate();
+        // var m = date.getMonth();
+        // var y = date.getFullYear();
         var form = '';
-        var today = new Date($.now());
-
-        var defaultEvents =  [{
-                title: 'Hey!',
-                start: new Date($.now() + 158000000),
-                className: 'bg-purple'
-            }, {
-                title: 'See John Deo',
-                start: today,
-                end: today,
-                className: 'bg-danger'
-            }, {
-                title: 'Buy a Moltran',
-                start: new Date($.now() + 338000000),
-                className: 'bg-primary'
-            }];
+        // var today = new Date($.now());
 
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
-            slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
-            minTime: '08:00:00',
-            maxTime: '21:00:00',  
-            defaultView: 'month',
+            minTime: '07:00:00',
+            maxTime: '21:00:00',
+            views: {
+              weeek:{
+                type: 'agendaWeek',
+                duration: {
+                    days: 7
+                },
+                title: 'Apertura',
+                columnFormat: 'dddd', // Format the day to only show like 'Monday'
+              }
+            },
+            defaultView: 'weeek',
             handleWindowResize: true,
             height: $(window).height() - 200,
             header: {
                 left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
+                center: ''
             },
-            events: defaultEvents,
+            // events: defaultEvents,
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events
@@ -173,18 +161,39 @@
             drop: function(date) { $this.onDrop($(this), date); },
             select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
             eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); },
-
         });
 
-        //on new event
+        // on new event
         this.$saveCategoryBtn.on('click', function(){
-            var categoryName = $this.$categoryForm.find("input[name='category-name']").val();
-            var categoryColor = $this.$categoryForm.find("select[name='category-color']").val();
-            if (categoryName !== null && categoryName.length != 0) {
-                $this.$extEvents.append('<div class="external-event bg-' + categoryColor + '" data-class="bg-' + categoryColor + '" style="position: relative;"><i class="fa fa-move"></i>' + categoryName + '</div>')
-                $this.enableDrag();
-            }
+          var section = $("#schedSetup").find("input[name='sections']").val();
+          var inputValues = $("#schedSetup").find("input");
+          var selectValues = $("#schedSetup").find("select");
+          var save = [];
 
+          for(var i = 0; i < $("#schedSetup").find("input").length; i++){
+              save[i] = $("#schedSetup").find("input")[i]['value'];
+          }
+
+          $.ajax({
+            url: 'subjectSave',
+            type: 'post',
+            postType: 'json',
+            data: {
+              "values": save,
+              "type": selectValues[0]['value']
+            },
+            success:function(data){
+              for(var i = 0; i < section; i++){
+                var categoryName = $this.$categoryForm.find("input[name='subject_name']").val();
+                if (categoryName !== null) {
+                    $this.$extEvents.append('<div class="external-event bg-primary" data-class="bg-primary" style="position: relative;"><i class="fa fa-move"></i>' + categoryName + '</div>')
+                    $this.enableDrag();
+                }
+              }
+              // $("#add-category").hide();
+            },
+            async:false
+          });
         });
     },
 

@@ -56,7 +56,4 @@
                     </div> <!-- container -->
 
                 </div> <!-- content -->
-<?php
-
-?>
 @endsection

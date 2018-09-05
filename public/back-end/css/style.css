@@ -1556,7 +1556,7 @@ body.fixed-left .side-menu.left {
   z-index: 9999;
 }
 .user-details .user-info {
-  margin-left: 60px;
+  margin-left: 10px;
   z-index: 99999;
   position: relative;
   color: #444;

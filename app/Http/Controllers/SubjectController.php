@@ -10,6 +10,10 @@ class SubjectController extends Controller
     public function show(){
       $subjects = Subject::all();
 
-      return view('admin.subjects',compact('subjects')); 
+      return view('admin.subjects',compact('subjects'));
+    }
+
+    public function save(Request $request){
+        // dd($request);
     }
 }

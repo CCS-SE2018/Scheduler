@@ -7,9 +7,9 @@ Route::get('/login',function(){
 Route::get('/dashboard', function(){
   return view('admin.home');
 });
-Route::get('/schedules',function(){
-  return view('admin.schedule');
-});
+
+Route::get('/schedules','UserController@showScheds');
+Route::post('/subjectSave','SubjectController@save');
 Route::get('/register', function(){
   return view('admin.register');
 });
