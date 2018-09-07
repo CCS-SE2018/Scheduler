@@ -9,14 +9,7 @@
         <div class="user-details">
             <div class="user-info">
                 <div class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{Auth::user()->instructor}}<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="{{url('/logout')}}">
-                                <i class="md md-settings-power"></i>Logout
-                            </a>
-                        </li>
-                    </ul>
+                    <p class="dropdown-toggle">{{Auth::user()->instructor}}</p>
                 </div>
                   <p class="text-muted m-0">Instructor</p>
             </div>
@@ -27,6 +20,11 @@
                 <?php $i; for($i = 0;$i < 4;$i++){ ?>
                   <li><a href="<?=url($urls[$i]);?>" class="waves-effect"><i class="<?=$classes[$i];?>"></i><span> <?=$desc[$i];?> </span></a></li>
                 <?php }?>
+                <li>
+                    <a href="{{url('/logout')}}">
+                        <i class="md md-settings-power"></i>Logout
+                    </a>
+                </li>
             </ul>
             <div class="clearfix"></div>
         </div>

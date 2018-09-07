@@ -51,7 +51,7 @@
                         </div> <!-- end Panel -->
 
                     </div> <!-- container -->
-                    
+
                 </div> <!-- content -->
             </div>
             <!-- M O D A L S -->
@@ -78,7 +78,7 @@
                                     <button type="submit" class="btn btn-info waves-effect waves-light">Save Changes</button>
                                 </div>
                                 <input type='hidden' class='editMode' name='editMode' value=''/>
-                                <input type='hidden' name='editID' value="{{$key->id}}"/>
+                                <input type='hidden' class="ed" name='editID' value=""/>
                             </form>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <input type='hidden' class='editMode' name='editMode' value=''/>
-                                <input type='hidden' name='editID' value="{{$key->id}}"/>
+                                <input type='hidden' class="del" name='editID' value=""/>
                             </form>
                         </div>
                     </div>

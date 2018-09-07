@@ -65,51 +65,56 @@
     <script src="public/js/jquery-ui-1.10.1.custom.min.js"></script>
     <script src="public/assets/select2/select2.min.js" type="text/javascript"></script>
     <script>
-            $(document).ready(function() {
-                    
-                $('table.datatable').DataTable();
-                
-        
-                $('#roomTable tbody').on( 'click', '.edit', function () {
-                  var room = $("#roomTable").DataTable();
-                  var data = room.row($(this).parents('tr')).data();
-                  var split = data[0].split(',');
-                  $('#RoomField-room_location').val(data[0]);
-                  $(".editMode").val("edit");
-                });
-        
-                $('#roomTable tbody').on( 'click', '.delete', function () {
-                    var room = $("#roomTable").DataTable();
-                    var data = room.row($(this).parents('tr')).data();
-                    var split = data[0].split(',');
-                    $('#RoomField-room_location').val(data[0]);
-                    $(".editMode").val("delete");
-                  });
-        
-                  $('#teacherTable tbody').on( 'click', '.edit', function () {
-                    var teacher = $("#teacherTable").DataTable();
-                    var data = teacher.row($(this).parents('tr')).data();
-                    var split = data[0].split(',');
-                    $('#TeacherField-profile_picture').val(data[0]);
-                    $('#TeacherField-FName').val(data[1]);
-                    $('#TeacherField-MName').val(data[2]);
-                    $('#TeacherField-LName').val(data[3]);
-                    $(".editMode").val("edit");
-                  });
-          
-                  $('#teacherTable tbody').on( 'click', '.delete', function () {
-                      var teacher = $("#teacherTable").DataTable();
-                      var data = teacher.row($(this).parents('tr')).data();
-                      var split = data[0].split(',');
-                      $('#TeacherField-profile_picture').val(data[0]);
-                      $('#TeacherField-FName').val(data[1]);
-                      $('#TeacherField-MName').val(data[2]);
-                      $('#TeacherField-LName').val(data[3]);
-                      $(".editMode").val("delete");
-                    });
-            
+      $(document).ready(function() {
+
+          $('table.datatable').DataTable();
+
+
+          $('#roomTable tbody').on( 'click', '.edit', function () {
+            var room = $("#roomTable").DataTable();
+            var data = room.row($(this).parents('tr')).data();
+            var split = data[0].split(',');
+            $('#RoomField-room_location').val(data[0]);
+            $(".editMode").val("edit");
+            $(".ed").val(data[1].substring(26,27));
+          });
+
+          $('#roomTable tbody').on( 'click', '.delete', function () {
+              var room = $("#roomTable").DataTable();
+              var data = room.row($(this).parents('tr')).data();
+              var split = data[0].split(',');
+              $('#RoomField-room_location').val(data[0]);
+              $(".editMode").val("delete");
+              $(".del").val(data[1].substring(26,27));
             });
-        </script>
+
+            $('#teacherTable tbody').on( 'click', '.edit', function () {
+              var teacher = $("#teacherTable").DataTable();
+              var data = teacher.row($(this).parents('tr')).data();
+              var split = data[0].split(',');
+              $('#TeacherField-profile_picture').val(data[0]);
+              $('#TeacherField-FName').val(data[1]);
+              $('#TeacherField-MName').val(data[2]);
+              $('#TeacherField-LName').val(data[3]);
+              $(".editMode").val("edit");
+              // console.log(data);
+              $(".ed").val(data[4].substring(26,27));
+            });
+
+            $('#teacherTable tbody').on( 'click', '.delete', function () {
+                var teacher = $("#teacherTable").DataTable();
+                var data = teacher.row($(this).parents('tr')).data();
+                var split = data[0].split(',');
+                $('#TeacherField-profile_picture').val(data[0]);
+                $('#TeacherField-FName').val(data[1]);
+                $('#TeacherField-MName').val(data[2]);
+                $('#TeacherField-LName').val(data[3]);
+                $(".editMode").val("delete");
+                $(".del").val(data[4].substring(26,27));
+              });
+
+      });
+    </script>
 
     <?php
 

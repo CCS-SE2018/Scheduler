@@ -15,6 +15,8 @@ Route::get('/register', function(){
 });
 Route::post('/signin', 'BasicController@signIn');
 Route::post('/store','BasicController@store');
+Route::post('/addRoom','RoomController@room');
+Route::post('/addTeacher','TeachersController@teacher');
 Route::get('/logout', function(){
   auth()->logout();
   return redirect('/');

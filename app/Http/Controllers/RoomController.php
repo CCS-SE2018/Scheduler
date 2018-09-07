@@ -12,7 +12,8 @@ class RoomController extends Controller
       return view('admin.rooms',compact('rooms'));
     }
 
-    public function addRoom(Request $request){
+    public function room(Request $request){
+      // dd($request);
       if($request['editMode'] == 'edit'){
         Room::where('id',$request['editID'])->update([
           'room_location' => $request['room_location'],
@@ -28,7 +29,7 @@ class RoomController extends Controller
           'room_location' => $request['room_location'],
         ]);
       }
-  
+
       return redirect('/rooms');
     }
 }

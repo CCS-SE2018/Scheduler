@@ -58,7 +58,7 @@
             </div> <!-- end Panel -->
 
         </div> <!-- container -->
-        
+
         <div id="teacherModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <<div class="form-group">
+                                <div class="form-group">
                                     <label for="TeacherField-MName" class="control-label">Middle Name</label>
                                     <input type="text" class="form-control" id="TeacherField-MName" name="teacher_MName">
                                 </div>
@@ -95,14 +95,14 @@
                                 </div>
                             </div>
                         </div>
-      
+
                     </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                           <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
                       </div>
                       <input type='hidden' class='editMode' name='editMode' value=''/>
-                      <input type='hidden' name='editID' value="{{$key->id}}"/>
+                      <input type='hidden' class="ed" name='editID' value=""/>
                     </form>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                                     </div>
                                 </div>
                                 <input type='hidden' class='editMode' name='editMode' value=''/>
-                                <input type='hidden' name='editID' value="{{$key->id}}"/>
+                                <input type='hidden' class="del" name='editID' value=""/>
                             </form>
                         </div>
                     </div>

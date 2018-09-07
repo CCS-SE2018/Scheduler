@@ -55,13 +55,6 @@
                                                       </div>
                                                       @endforeach
                                                   </div>
-                                                  <!-- checkbox -->
-                                                  <div class="checkbox checkbox-primary m-t-40">
-                                                      <input id="drop-remove" type="checkbox">
-                                                      <label for="drop-remove">
-                                                          Remove after drop
-                                                      </label>
-                                                  </div>
                                                   <a href="#" data-toggle="modal" data-target="#add-category" class="btn btn-lg btn-success btn-block waves-effect waves-light">
                                                       <i class="fa fa-plus"></i> Archive Schedule
                                                   </a>

@@ -1561,7 +1561,7 @@ body.fixed-left .side-menu.left {
   position: relative;
   color: #444;
 }
-.user-details .user-info a.dropdown-toggle {
+.user-details .user-info p.dropdown-toggle {
   font-family: 'Roboto', sans-serif;
   font-weight: 600;
   color: #666;

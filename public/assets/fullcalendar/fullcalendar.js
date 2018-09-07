@@ -26,17 +26,17 @@
             var $categoryClass = eventObj.attr('data-class');
             // we need to copy it, so that multiple events don't have a reference to the same object
             var copiedEventObject = $.extend({}, originalEventObject);
+
             // assign it the date that was reported
             copiedEventObject.start = date;
+            copiedEventObject.end = date;
             if ($categoryClass)
                 copiedEventObject['className'] = [$categoryClass];
             // render the event on the calendar
             $this.$calendar.fullCalendar('renderEvent', copiedEventObject, true);
-            // is the "remove after drop" checkbox checked?
-            if ($('#drop-remove').is(':checked')) {
-                // if so, remove the element from the "Draggable Events" list
-                eventObj.remove();
-            }
+            eventObj.remove();
+            console.log(copiedEventObject['start']['_d']);
+            console.log($("#calendar").find("div .fc-time span"));
     },
     /* on click on event */
     CalendarApp.prototype.onEventClick =  function (calEvent, jsEvent, view) {
@@ -106,6 +106,7 @@
     CalendarApp.prototype.enableDrag = function() {
         //init events
         $(this.$event).each(function () {
+          // console.log($(this));
             // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
             // it doesn't need to have a start or end
             var eventObject = {
@@ -125,7 +126,7 @@
     CalendarApp.prototype.init = function() {
         this.enableDrag();
         /*  Initialize the calendar  */
-        // var date = new Date();
+        var date = new Date();
         // var d = date.getDate();
         // var m = date.getMonth();
         // var y = date.getFullYear();
@@ -174,26 +175,13 @@
               save[i] = $("#schedSetup").find("input")[i]['value'];
           }
 
-          $.ajax({
-            url: 'subjectSave',
-            type: 'post',
-            postType: 'json',
-            data: {
-              "values": save,
-              "type": selectValues[0]['value']
-            },
-            success:function(data){
-              for(var i = 0; i < section; i++){
-                var categoryName = $this.$categoryForm.find("input[name='subject_name']").val();
-                if (categoryName !== null) {
-                    $this.$extEvents.append('<div class="external-event bg-primary" data-class="bg-primary" style="position: relative;"><i class="fa fa-move"></i>' + categoryName + '</div>')
-                    $this.enableDrag();
-                }
-              }
-              // $("#add-category").hide();
-            },
-            async:false
-          });
+          for(var i = 0; i < section; i++){
+            var categoryName = $this.$categoryForm.find("input[name='subject_name']").val();
+            if (categoryName !== null) {
+                $this.$extEvents.append('<div class="external-event bg-primary" data-class="bg-primary" style="position: relative;"><i class="fa fa-move"></i>' + categoryName + '</div>')
+                $this.enableDrag();
+            }
+          }
         });
     },
 

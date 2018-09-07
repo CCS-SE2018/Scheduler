@@ -12,10 +12,10 @@ class TeachersController extends Controller
       return view('admin.teachers',compact('teachers'));
     }
 
-    public function addTeacher(Request $request){
+    public function teacher(Request $request){
       if($request['editMode'] == 'edit'){
         Teachers::where('id',$request['editID'])->update([
-          'profile_picture' => $request['profile_picture'],
+          // 'profile_picture' => $request['profile_picture'],
           'teacher_FName' => $request['teacher_FName'],
           'teacher_MName' => $request['teacher_MName'],
           'teacher_LName' => $request['teacher_LName'],
@@ -23,7 +23,7 @@ class TeachersController extends Controller
       }
       else if($request['editMode'] == 'delete'){
         Teachers::where('id',$request['editID'])->delete([
-          'profile_picture' => $request['profile_picture'],
+          // 'profile_picture' => $request['profile_picture'],
           'teacher_FName' => $request['teacher_FName'],
           'teacher_MName' => $request['teacher_MName'],
           'teacher_LName' => $request['teacher_LName'],
@@ -37,7 +37,7 @@ class TeachersController extends Controller
           'teacher_LName' => $request['teacher_LName'],
         ]);
       }
-  
+
       return redirect('/teachers');
     }
 
