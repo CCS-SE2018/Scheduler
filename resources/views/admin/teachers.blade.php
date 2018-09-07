@@ -40,7 +40,7 @@
                             <tbody>
                                 @foreach($teachers as $key)
                                 <tr class="gradeX">
-                                    <td>{{$key->profile_picture}}</td>
+                                    <td><img src="public/images/uploads/{{$key->profile_picture}}" style="width:100px;height:100px;"class="thumb-lg img-circle img-thumbnail" alt="profile-image"></td>
                                     <td>{{$key->teacher_FName}}</td>
                                     <td>{{$key->teacher_MName}}</td>
                                     <td>{{$key->teacher_LName}}</td>
@@ -70,12 +70,21 @@
                       <form id="teacherForm" action="{{url('/addTeacher')}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="TeacherField-profile_picture" class="control-label">Instructor</label>
-                                    <input type="text" class="form-control" id="TeacherField-profile_picture" name="profile_picture">
+                                  <div class="avatar-upload">
+                                      <div class="avatar-edit">
+                                          <input type='file' name="profile_picture" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                          <label for="imageUpload"></label>
+                                      </div>
+                                      <div class="avatar-preview">
+                                          <div id="imagePreview" style="background-image: url(public/images/small/bg.jpg);"></div>
+                                      </div>
+                                  </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="TeacherField-FName" class="control-label">First Name</label>

@@ -5,16 +5,18 @@
     <div class="content">
         <div class="container">
           <div class="row port">
+              @foreach($teachers as $key)
               <div class="portfolioContainer">
-                  <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
+                  <div class="col-sm-2 col-lg-2 col-md-2 webdesign illustrator">
                       <div class="gal-detail thumb">
                           <a href="#sched1" data-toggle="modal" title="Schedule-1">
-                              <img src="public/images/small/img1.jpg" class="thumb-img" alt="work-thumbnail">
+                              <img class="pics" src="public/images/uploads/{{$key->profile_picture}}" class="thumb-img" alt="work-thumbnail" style="width:200px;height:200px;">
                           </a>
-                          <h4>Teacher Image Here</h4>
+                          <h4>{{$key->teacher_FName}} {{$key->teacher_MName}} {{$key->teacher_LName}}</h4>
                       </div>
                   </div>
                 </div>
+                @endforeach
             </div>
             <div id="sched1" class="modal fade">
               <div class="modal-dialog" style="width:70%;">

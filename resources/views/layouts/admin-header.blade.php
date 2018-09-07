@@ -9,6 +9,10 @@
         <!-- Base Css Files -->
         <link href="public/back-end/css/bootstrap.min.css" rel="stylesheet" />
 
+        <!-- Custom Files -->
+        <link href="public/back-end/css/helper.css" rel="stylesheet" type="text/css" />
+        <link href="public/back-end/css/style.css" rel="stylesheet" type="text/css" />
+
         <!-- Font Icons -->
         <link href="public/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
         <link href="public/assets/ionicon/css/ionicons.min.css" rel="stylesheet" />
@@ -24,10 +28,6 @@
         <link rel="stylesheet" href="public/assets/magnific-popup/magnific-popup.css" />
         <link rel="stylesheet" href="public/assets/jquery-datatables-editable/datatables.css" />
 
-        <!-- Custom Files -->
-        <link href="public/back-end/css/helper.css" rel="stylesheet" type="text/css" />
-        <link href="public/back-end/css/style.css" rel="stylesheet" type="text/css" />
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -40,6 +40,7 @@
         <link href="public/assets/select2/select2.css" rel="stylesheet" type="text/css" />
 
         <script src="public/back-end/js/modernizr.min.js"></script>
+        <link href="public/back-end/css/imagething.css" rel="stylesheet" type="text/css" />
 
     </head>
 

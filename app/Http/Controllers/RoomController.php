@@ -20,9 +20,7 @@ class RoomController extends Controller
         ]);
       }
       else if($request['editMode'] == 'delete'){
-        Room::where('id',$request['editID'])->delete([
-          'room_location' => $request['room_location'],
-        ]);
+        Room::where('id',$request['editID'])->delete();
       }
       else{
         Room::create([

@@ -7,7 +7,6 @@ Route::get('/login',function(){
 Route::get('/dashboard', function(){
   return view('admin.home');
 });
-
 Route::get('/schedules','UserController@showScheds');
 Route::post('/subjectSave','SubjectController@save');
 Route::get('/register', function(){

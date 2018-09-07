@@ -64,6 +64,7 @@
 
     <script src="public/js/jquery-ui-1.10.1.custom.min.js"></script>
     <script src="public/assets/select2/select2.min.js" type="text/javascript"></script>
+    <script src="public/back-end/js/imagething.js"></script>
     <script>
       $(document).ready(function() {
 
@@ -92,12 +93,13 @@
               var teacher = $("#teacherTable").DataTable();
               var data = teacher.row($(this).parents('tr')).data();
               var split = data[0].split(',');
-              $('#TeacherField-profile_picture').val(data[0]);
+
               $('#TeacherField-FName').val(data[1]);
               $('#TeacherField-MName').val(data[2]);
               $('#TeacherField-LName').val(data[3]);
+              $('#imagePreview').style.backgroundImage = "url('../public/images/uploads/1536306683.jpg')";
               $(".editMode").val("edit");
-              // console.log(data);
+              //Getting data-rel value from the row data
               $(".ed").val(data[4].substring(26,27));
             });
 
