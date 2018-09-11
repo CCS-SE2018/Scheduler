@@ -63,7 +63,7 @@
                             <h4 class="modal-title">Rooms</h4>
                         </div>
                         <div class="modal-body">
-                            <form id="roomForm" action="{{url('/addRoom')}}" method="post" enctype="multipart/form-data">
+                            <form id="roomForm" action="{{url('/room')}}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-4">
@@ -92,7 +92,7 @@
                             <h4 class="modal-title">Rooms</h4>
                         </div>
                         <div class="modal-body">
-                            <form id="roomForm" action="{{url('/addRoom')}}" method="post" enctype="multipart/form-data">
+                            <form id="roomForm" action="{{url('/room')}}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-4">
@@ -110,9 +110,5 @@
                     </div>
                 </div>
             </div><!-- /.modal -->
-
-<?php
-
-?>
 <script type="text/­javascript" src="https://­ajax.googleapis.com/­ajax/libs/jquery/­3.3.1/jquery.min.js"></script>
 @endsection

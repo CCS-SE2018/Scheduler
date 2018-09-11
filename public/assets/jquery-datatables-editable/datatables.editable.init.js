@@ -228,7 +228,17 @@
 				} else {
 					$this.html('<form enctype="multipart/form-data">');
 					$this.html('<input type="hidden" name="_token" value="{{ csrf_token() }}">');
-					if(page=='rooms'){
+					if(page="schedules"){
+						$this.html( '<input type="text" class="form-control input-block value="'+data[0]+'">'+data[0]);
+						$this.html( '<input type="text" class="form-control input-block value="'+data[1]+'">'+data[1]);
+						$this.html( '<input type="text" class="form-control input-block value="'+data[2]+'">'+data[2]);
+						$this.html( '<input type="text" class="form-control input-block value="'+data[3]+'">'+data[3]);
+						$this.html( '<input type="text" class="form-control input-block value="'+data[4]+'">'+data[4]);
+						$this.html( '<input type="text" class="form-control input-block value="'+data[5]+'">'+data[5]);
+						$this.html( '<input type="text" class="form-control input-block value="'+data[6]+'">'+data[6]);
+						$this.html( '<input type="text" class="form-control input-block value="'+data[7]+'">'+data[7]);
+					}
+					else if(page=='rooms'){
 						$this.html( '<input type="text" id="rooms" placeholder="Enter room." class="form-control input-block value="'+data[0]+'">'+data[0]);
 					}
 					else if(page=='teachers'){

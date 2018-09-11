@@ -40,7 +40,7 @@
                             <tbody>
                                 @foreach($teachers as $key)
                                 <tr class="gradeX">
-                                    <td><img src="public/images/uploads/{{$key->profile_picture}}" style="width:100px;height:100px;"class="thumb-lg img-circle img-thumbnail" alt="profile-image"></td>
+                                    <td><img src="public/images/uploads/{{$key->profile_picture}}" style="width:100px;height:100px;" class="thumb-lg img-circle img-thumbnail" alt="profile-image"></td>
                                     <td>{{$key->teacher_FName}}</td>
                                     <td>{{$key->teacher_MName}}</td>
                                     <td>{{$key->teacher_LName}}</td>
@@ -67,7 +67,7 @@
                         <h4 class="modal-title">Teacher</h4>
                     </div>
                     <div class="modal-body">
-                      <form id="teacherForm" action="{{url('/addTeacher')}}" method="post" enctype="multipart/form-data">
+                      <form id="teacherForm" action="{{url('/teacher')}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-12">
@@ -104,8 +104,7 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
+                      </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                           <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
@@ -124,7 +123,7 @@
                             <h4 class="modal-title">Rooms</h4>
                         </div>
                         <div class="modal-body">
-                            <form id="roomForm" action="{{url('/addTeacher')}}" method="post" enctype="multipart/form-data">
+                            <form id="roomForm" action="{{url('/teacher')}}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-4">
@@ -142,6 +141,5 @@
                     </div>
                 </div>
             </div><!-- /.modal -->
-
     </div> <!-- content -->
 @endsection

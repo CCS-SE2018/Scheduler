@@ -13,7 +13,7 @@ class BasicController extends Controller
     }
     public function check(){
         if(Auth::check())
-          return redirect('/dashboard');
+          return redirect('/schedules');
         else
           return redirect('/login');
     }
@@ -25,7 +25,7 @@ class BasicController extends Controller
         ]);
       }
 
-      return redirect('/dashboard');
+      return redirect('/schedules');
     }
 
     public function store() {
