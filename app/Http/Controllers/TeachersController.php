@@ -17,8 +17,12 @@ class TeachersController extends Controller
       // dd($request->file('profile_picture'));
 
       if($request['editMode'] == 'edit'){
+        $avatar = $request->file('profile_picture');
+        $filename = time() . '.' . $avatar->getClientOriginalExtension();
+        Image::make($avatar)->resize(300, 300)->save( public_path('images/uploads/' . $filename ) );
+        // dd($request);
         Teachers::where('id',$request['editID'])->update([
-          // 'profile_picture' => $request['profile_picture'],
+          'profile_picture' => $filename,
           'teacher_FName' => $request['teacher_FName'],
           'teacher_MName' => $request['teacher_MName'],
           'teacher_LName' => $request['teacher_LName'],
@@ -28,6 +32,7 @@ class TeachersController extends Controller
         Teachers::where('id',$request['editID'])->delete();
       }
       else{
+        // dd($request);
           $avatar = $request->file('profile_picture');
       		$filename = time() . '.' . $avatar->getClientOriginalExtension();
       		Image::make($avatar)->resize(300, 300)->save( public_path('images/uploads/' . $filename ) );

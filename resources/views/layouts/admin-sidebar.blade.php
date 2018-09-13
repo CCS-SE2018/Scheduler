@@ -22,7 +22,7 @@
                 <?php }?>
                 <li>
                     <a href="{{url('/logout')}}">
-                        <i class="md md-settings-power"></i>Logout
+                        <i class="md md-settings-power"></i><span>Logout</span>
                     </a>
                 </li>
             </ul>

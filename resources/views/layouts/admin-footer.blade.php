@@ -61,8 +61,6 @@
     <script src="public/back-end/js/imagething.js"></script>
     <script>
       $(document).ready(function() {
-          // var num = 0;
-          console.log("Welcome!");
           $('table.datatable').DataTable({
             'info': false
           });
@@ -88,13 +86,12 @@
             $('#teacherTable tbody').on( 'click', '.edit', function () {
               var teacher = $("#teacherTable").DataTable();
               var data = teacher.row($(this).parents('tr')).data();
-              var split = data[0].split(',');
-
               $('#TeacherField-FName').val(data[1]);
               $('#TeacherField-MName').val(data[2]);
               $('#TeacherField-LName').val(data[3]);
-              $('#imagePreview').style.backgroundImage = "url('../public/images/uploads/1536306683.jpg')";
               $(".editMode").val("edit");
+              var url = "url("+"public/images/uploads/"+data[0].substring(32,46)+")";
+              $('#imagePreview')[0]['style']['backgroundImage'] = url;
               //Getting data-rel value from the row data
               $(".ed").val(data[4].substring(26,27));
             });
