@@ -2,7 +2,7 @@
 <?php
     $urls = ["/","/rooms","/teachers","/archive"];
     $classes = ["md md-home","md md-my-library-books","md md-face-unlock"," ion-ios7-box-outline"];
-    $desc = ["Dashboard","Rooms","Teachers","Archive"];
+    $desc = ["Subjects","Rooms","Teachers","Archive"];
 ?>
 <div class="left side-menu">
     <div class="sidebar-inner slimscrollleft">
@@ -17,9 +17,18 @@
         <!--- Divider -->
         <div id="sidebar-menu">
             <ul>
-                <?php $i; for($i = 0;$i < 4;$i++){ ?>
+                <?php $i; for($i = 0;$i < 4;$i++){
+                    if($i == 0){?>
+                  <li class="has_sub">
+                    <a class="waves-effect"><i class="<?=$classes[$i];?>"></i><span> Dashboard </span></a>
+                    <ul>
+                        <li><a href="<?=url($urls[$i]);?>" class="waves-effect"><i class="md md-folder"></i><span> Subject Schedules </span></a></li>
+                        <li><a href="javascript:void(0);"><i class="md md-assignment-turned-in"></i><span> Room Assignments </span></a></a></li>
+                    </ul>
+                  </li>
+                <?php }else{ ?>
                   <li><a href="<?=url($urls[$i]);?>" class="waves-effect"><i class="<?=$classes[$i];?>"></i><span> <?=$desc[$i];?> </span></a></li>
-                <?php }?>
+                <?php } }?>
                 <li>
                     <a href="{{url('/logout')}}">
                         <i class="md md-settings-power"></i><span>Logout</span>

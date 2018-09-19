@@ -61,10 +61,8 @@
     <script src="public/back-end/js/imagething.js"></script>
     <script>
       $(document).ready(function() {
-          $('table.datatable').DataTable({
-            'info': false
-          });
-
+          var v;
+          var count = 0;
           $('#roomTable tbody').on( 'click', '.edit', function () {
             var room = $("#roomTable").DataTable();
             var data = room.row($(this).parents('tr')).data();
@@ -85,7 +83,7 @@
 
             $('#teacherTable tbody').on( 'click', '.edit', function () {
               var teacher = $("#teacherTable").DataTable();
-              var data = teacher.row($(this).parents('tr')).data();
+              var data = teacher.row($(this).parents('tr'));
               $('#TeacherField-FName').val(data[1]);
               $('#TeacherField-MName').val(data[2]);
               $('#TeacherField-LName').val(data[3]);
@@ -98,7 +96,7 @@
 
             $('#teacherTable tbody').on( 'click', '.delete', function () {
                 var teacher = $("#teacherTable").DataTable();
-                var data = teacher.row($(this).parents('tr')).data();
+                var data = teacher.row($(this).parents('tr'));
                 var split = data[0].split(',');
                 $('#TeacherField-profile_picture').val(data[0]);
                 $('#TeacherField-FName').val(data[1]);
@@ -107,9 +105,56 @@
                 $(".editMode").val("delete");
                 $(".del").val(data[4].substring(26,27));
               });
+
+
+
+           function initTables(teachID){
+             $("#teacherSched"+teachID).DataTable();
+
+             $("#click"+v).click(function(){
+               count = 0;
+               $("#addSchedule").find("input[type=text], input[type=number]").val("");
+             });
+           }
+
+           function subjectManipulation(){
+            $('table.schedule tbody').on( 'click', '.edit', function () {
+                count = 0;
+                var table = $(this).attr('data-rel').split('|')[1];
+                v = table;
+                var subject = $(this).attr('data-rel').split('|')[0];
+                var teacher = $("#teacherSched"+table).DataTable();
+                var data = teacher.row($(this).parents('tr')).data();
+                $('#subject_code'+subject).val(data[0]);
+                $('#subject_name'+subject).val(data[1]);
+                $('#subject_type'+subject).val(data[3]);
+                $('#section'+subject).val(data[2]);
+                $('#units'+subject).val(data[4]);
+                $('#day'+subject).val(data[5]);
+                $('#time'+subject).val(data[6]);
+                $('#room'+subject).val(data[7]);
+                $("#mode"+subject).val("edit");
+                $("#ID"+subject).val(subject);
+              });
+
+              $('table.schedule tbody').on( 'click', '.delete', function () {
+                  count = 0;
+                  var table = $(this).attr('data-rel').split('|')[1];
+                  v = table;
+                  var subject = $(this).attr('data-rel').split('|')[0];
+                  $("#delMode"+subject).val("delete");
+                  $("#delID"+subject).val(subject);
+                });
+
+              $("#subjectModals").load('<?php echo url('/loadSubjectModals');?>',function(){
+                  subjectCRUD();
+              });
+          }
+
             //Schedule Load Subjects Script
             $("a.subSched").on('click',function(){
               var instructorID = $(this).attr("href").split("#sched")[1];
+              v = instructorID;
               $.ajax({
                 url: "{{url('loadSched')}}",
                 type: 'get',
@@ -117,45 +162,72 @@
                   "teacher": instructorID,
                 },
                 success:function(data){
-                  $("table.schedule").load('<?php echo url('/loadSubjects');?>');
+                  $("#initSched"+instructorID).load('<?php echo url('/loadSubjects');?>',function(){
+                      initTables(instructorID);
+                      subjectManipulation();
+                  });
                 },
-                async:false
+                async:true
               });
             });
-            //Schedule CRUD Script
-            $("button.subject").on('click',function(){
-                var values = [];
-                var instructorID = $("div").find("div.schedModal.in").find("button.subject")[0]['id'].split('subjectSubmit')[1];
-                for(var i = 0; i < (($("#scheduleForm"+instructorID).find("input").length) - 2);i++){
-                  values[i] = $("#scheduleForm"+instructorID).find("input")[i]['value'];
-                }
-                var room = $("#scheduleForm"+instructorID).find('select')[0]['value'];
-                $.ajax({
-                  url: "{{url('subject')}}",
-                  type: 'post',
-                  postType: 'json',
-                  data: {
-                    "_token": "{{csrf_token()}}",
-                    "teacher": instructorID,
-                    "values": values,
-                    "room": room
-                  },
-                  success:function(data){
-                    $("table.schedule").load('<?php echo url('/loadSubjects');?>');
-                  },
-                  fail:function(data){
-                    console.log("FALSE!");
-                    return false;
-                  },
-                  async:false
-                });
-            });
 
+            function subjectCRUD(){
+                //Schedule CRUD Script
+                $("button.subject").on('click',function(){
+                  if(count == 0){
+                    var values = [];
+                    var subject = "";
+                    var teach = v;
+                    if($(this).attr('data-rel') == ""){
+                      for(var i = 0; i < (($("#scheduleForm").find("input").length) - 1);i++){
+                        values[i] = $("#scheduleForm").find("input")[i]['value'];
+                      }
+                      var room = $("#scheduleForm").find('select')[0]['value'];
+                    }else{
+                      subject = $("div").find("div.schedModal.in").find("button.subject")[0]['id'].split('subjectSubmit')[1];
+                      for(var i = 0; i < (($("#scheduleForm"+subject).find("input").length) - 2);i++){
+                        values[i] = $("#scheduleForm"+subject).find("input")[i]['value'];
+                      }
+                      var room = $("#scheduleForm"+subject).find('select')[0]['value'];
+                    }
+                    $.ajax({
+                      url: "{{url('subject')}}",
+                      type: 'post',
+                      postType: 'json',
+                      data: {
+                        "_token": "{{csrf_token()}}",
+                        "teacher": teach,
+                        "values": values,
+                        "room": room,
+                        "init": $("#addMode").val(),
+                        "mode": $("#mode"+subject).val(),
+                        "subject": $("#ID"+subject).val(),
+                        "delMode": $("#delMode"+subject).val(),
+                        "delSubject": $("#delID"+subject).val(),
+                      },
+                      success:function(data){
+                          $("#initSched"+teach).load('<?php echo url('/loadSubjects');?>',function(){
+                              initTables(teach);
+                              subjectManipulation();
+                          });
+                      },
+                      fail:function(data){
+                        console.log("FALSE!");
+                        return false;
+                      },
+                      async:true
+                    });
+                    count++;
+                  }else{
+                    break;
+                  }
+                });
+
+            }
       });
     </script>
 
     <?php
-
     $url = $_SERVER['REQUEST_URI'];
     $arr = explode("/",$url);
     $page = $arr[count($arr)-1];

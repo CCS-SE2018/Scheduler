@@ -9,7 +9,7 @@ use App\Room;
 class UserController extends Controller
 {
     public function showScheds(){
-      $subjects = Subject::join('rooms','subjects.room_location','=','rooms.id')->get();
+      $subjects = Subject::all();
       $teachers = Teachers::all();
       $rooms = Room::all();
       return view('admin.schedule',compact('subjects','teachers','rooms'));

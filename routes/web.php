@@ -22,5 +22,6 @@ Route::get('/logout', function(){
 });
 Route::get('/loadSched','SubjectController@specifySchedule');
 Route::get('/loadSubjects','SubjectController@updateSubjects');
+Route::get('/loadSubjectModals','SubjectController@loadSubjects');
 Route::get('/rooms','RoomController@show');
 Route::get('/teachers','TeachersController@show');
