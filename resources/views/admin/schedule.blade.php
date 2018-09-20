@@ -28,23 +28,26 @@
             <div id="sched{{$key->id}}" class="modal fade teacherSchedule">
               <div class="modal-dialog" style="width:70%;">
                 <div class="modal-content">
-                  <div class="row">
-                      <div class="col-sm-12">
-                          <h4 class="pull-left page-title">{{$key->teacher_FName}} {{$key->teacher_MName}} {{$key->teacher_LName}}'s Subjects</h4>
-                      </div>
-                  </div>
-                  <div class="panel">
-                      <div class="panel-body">
-                          <div class="row">
-                              <div class="col-sm-6">
-                                  <div class="m-b-30">
-                                    <button id="click{{$key->id}}" data-toggle="modal" data-target="#addSchedule" class="btn btn-primary waves-effect waves-light add">Add <i class="fa fa-plus"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                          <div id="initSched{{$key->id}}" class="notaschedule">
-                          </div>
-                      </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="m-b-30">
+                                <button id="click{{$key->id}}" data-toggle="modal" data-target="#addSchedule" class="btn btn-primary waves-effect waves-light add">Add <i class="fa fa-plus"></i></button>
+                                <button id="btnPrint_printSched{{$key->id}}" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                  <div id="print{{$key->id}}">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="pull-left page-title">{{$key->teacher_FName}} {{$key->teacher_MName}} {{$key->teacher_LName}}'s Subjects</h4>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div id="initSched{{$key->id}}" class="notaschedule">
+                            </div>
+                        </div>
+                    </div>
                   </div>
                 </div>
               </div>

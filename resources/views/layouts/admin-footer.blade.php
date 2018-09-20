@@ -109,7 +109,11 @@
 
 
            function initTables(teachID){
-             $("#teacherSched"+teachID).DataTable();
+             $("#teacherSched"+teachID).DataTable({
+               paging: false,
+               searching: false,
+               info: false
+             });
 
              $("#click"+v).click(function(){
                count = 0;
@@ -149,6 +153,11 @@
               $("#subjectModals").load('<?php echo url('/loadSubjectModals');?>',function(){
                   subjectCRUD();
               });
+
+              document.getElementById("btnPrint_printSched"+v).onclick = function () {
+                  $printPP = document.getElementById("print"+v);
+                  printElement($printPP);
+              }
           }
 
             //Schedule Load Subjects Script
@@ -218,11 +227,24 @@
                       async:true
                     });
                     count++;
-                  }else{
-                    break;
                   }
                 });
+            }
 
+            function printElement(elem) {
+                var domClone = elem.cloneNode(true);
+
+                var $printSection = document.getElementById("printSection");
+
+                if (!$printSection) {
+                    var $printSection = document.createElement("div");
+                    $printSection.id = "printSection";
+                    document.body.appendChild($printSection);
+                }
+
+                $printSection.innerHTML = "";
+                $printSection.appendChild(domClone);
+                window.print();
             }
       });
     </script>
