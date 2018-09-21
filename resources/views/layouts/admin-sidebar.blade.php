@@ -23,7 +23,7 @@
                     <a class="waves-effect"><i class="<?=$classes[$i];?>"></i><span> Dashboard </span></a>
                     <ul>
                         <li><a href="<?=url($urls[$i]);?>" class="waves-effect"><i class="md md-folder"></i><span> Subject Schedules </span></a></li>
-                        <li><a href="javascript:void(0);"><i class="md md-assignment-turned-in"></i><span> Room Assignments </span></a></a></li>
+                        <li><a href="{{url('/roomsassign')}}"><i class="md md-assignment-turned-in"></i><span> Room Assignments </span></a></a></li>
                     </ul>
                   </li>
                 <?php }else{ ?>

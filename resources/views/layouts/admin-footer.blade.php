@@ -230,6 +230,11 @@
                   }
                 });
             }
+            
+            document.getElementById("btnPrint_printRoom").onclick = function () {
+                $printPP = document.getElementById("printRoom");
+                printElement($printPP);
+            }
 
             function printElement(elem) {
                 var domClone = elem.cloneNode(true);

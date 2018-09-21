@@ -24,4 +24,5 @@ Route::get('/loadSched','SubjectController@specifySchedule');
 Route::get('/loadSubjects','SubjectController@updateSubjects');
 Route::get('/loadSubjectModals','SubjectController@loadSubjects');
 Route::get('/rooms','RoomController@show');
+Route::get('/roomsassign','RoomController@showAssign');
 Route::get('/teachers','TeachersController@show');
