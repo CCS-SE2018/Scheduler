@@ -63,27 +63,31 @@
       $(document).ready(function() {
           var v;
           var count = 0;
-          $('#roomTable tbody').on( 'click', '.edit', function () {
-            var room = $("#roomTable").DataTable();
-            var data = room.row($(this).parents('tr')).data();
-            var split = data[0].split(',');
-            $('#RoomField-room_location').val(data[0]);
-            $(".editMode").val("edit");
-            $(".ed").val(data[1].substring(26,27));
-          });
 
-          $('#roomTable tbody').on( 'click', '.delete', function () {
+          if(window.location.href.split('/')[4] == 'rooms'){
+            $("#roomTable").DataTable();
+            $('#roomTable tbody').on( 'click', '.edit', function () {
               var room = $("#roomTable").DataTable();
               var data = room.row($(this).parents('tr')).data();
               var split = data[0].split(',');
               $('#RoomField-room_location').val(data[0]);
-              $(".editMode").val("delete");
-              $(".del").val(data[1].substring(26,27));
+              $(".editMode").val("edit");
+              $(".ed").val(data[1].substring(26,27));
             });
 
+            $('#roomTable tbody').on( 'click', '.delete', function () {
+                var room = $("#roomTable").DataTable();
+                var data = room.row($(this).parents('tr')).data();
+                var split = data[0].split(',');
+                $('#RoomField-room_location').val(data[0]);
+                $(".editMode").val("delete");
+                $(".del").val(data[1].substring(26,27));
+              });
+          }else if(window.location.href.split('/')[4] == 'teachers'){
+            $("#teacherTable").DataTable();
             $('#teacherTable tbody').on( 'click', '.edit', function () {
               var teacher = $("#teacherTable").DataTable();
-              var data = teacher.row($(this).parents('tr'));
+              var data = teacher.row($(this).parents('tr')).data();
               $('#TeacherField-FName').val(data[1]);
               $('#TeacherField-MName').val(data[2]);
               $('#TeacherField-LName').val(data[3]);
@@ -96,23 +100,17 @@
 
             $('#teacherTable tbody').on( 'click', '.delete', function () {
                 var teacher = $("#teacherTable").DataTable();
-                var data = teacher.row($(this).parents('tr'));
-                var split = data[0].split(',');
-                $('#TeacherField-profile_picture').val(data[0]);
-                $('#TeacherField-FName').val(data[1]);
-                $('#TeacherField-MName').val(data[2]);
-                $('#TeacherField-LName').val(data[3]);
-                $(".editMode").val("delete");
+                var data = teacher.row($(this).parents('tr')).data();
+                $(".delMode").val("delete");
                 $(".del").val(data[4].substring(26,27));
               });
-
-
+          }
 
            function initTables(teachID){
              $("#teacherSched"+teachID).DataTable({
                paging: false,
                searching: false,
-               info: false
+               info: false,
              });
 
              $("#click"+v).click(function(){
@@ -191,13 +189,17 @@
                       for(var i = 0; i < (($("#scheduleForm").find("input").length) - 1);i++){
                         values[i] = $("#scheduleForm").find("input")[i]['value'];
                       }
-                      var room = $("#scheduleForm").find('select')[0]['value'];
+                      var type = $("#scheduleForm").find('select')[0]['value'];
+                      var day = $("#scheduleForm").find('select')[1]['value'];
+                      var room = $("#scheduleForm").find('select')[2]['value'];
                     }else{
                       subject = $("div").find("div.schedModal.in").find("button.subject")[0]['id'].split('subjectSubmit')[1];
                       for(var i = 0; i < (($("#scheduleForm"+subject).find("input").length) - 2);i++){
                         values[i] = $("#scheduleForm"+subject).find("input")[i]['value'];
                       }
-                      var room = $("#scheduleForm"+subject).find('select')[0]['value'];
+                      var type = $("#scheduleForm"+subject).find('select')[0]['value'];
+                      var day = $("#scheduleForm"+subject).find('select')[1]['value'];
+                      var room = $("#scheduleForm"+subject).find('select')[2]['value'];
                     }
                     $.ajax({
                       url: "{{url('subject')}}",
@@ -208,6 +210,8 @@
                         "teacher": teach,
                         "values": values,
                         "room": room,
+                        "day": day,
+                        "subject_type": type,
                         "init": $("#addMode").val(),
                         "mode": $("#mode"+subject).val(),
                         "subject": $("#ID"+subject).val(),
@@ -230,10 +234,12 @@
                   }
                 });
             }
-            
-            document.getElementById("btnPrint_printRoom").onclick = function () {
-                $printPP = document.getElementById("printRoom");
-                printElement($printPP);
+
+            if(window.location.href.split('/')[4] == 'roomsassign'){
+              document.getElementById("btnPrint_printRoom").onclick = function () {
+                  $printPP = document.getElementById("printRoom");
+                  printElement($printPP);
+              }
             }
 
             function printElement(elem) {

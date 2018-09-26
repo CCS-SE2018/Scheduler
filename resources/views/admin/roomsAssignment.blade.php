@@ -38,21 +38,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+
                                         @foreach($subjects as $key2)
                                         @if($key->room_location==$key2->room_location)
                                             <tr class="gradeX">
                                             <td>{{$key2->subject_code}}</td>
-                                            <td>{{$key2->teacher_FName}}</td>
+                                            <td>{{$key2->teacher_FName}} {{$key2->teacher_MName}} {{$key2->teacher_LName}}</td>
                                             <td>{{$key2->schedule_time}}</td>
                                             </tr>
                                         @endif
                                         @endforeach
-                                        
+
                                     </tbody>
-                                    
+
                                     </table>
-                                    
+
                                 @endforeach
                                 </div>
                             </div>

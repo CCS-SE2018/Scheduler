@@ -30,11 +30,11 @@
                 </div>
             </div>
 
-            <div class="form-group m-t-30">
+            <!-- <div class="form-group m-t-30">
                 <div class="col-sm-12 text-center">
                     <a href="{{url('/register')}}">Create an account</a>
                 </div>
-            </div>
+            </div> -->
 
             @include('layouts.errors')
         </form>

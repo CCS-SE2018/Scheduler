@@ -16,9 +16,9 @@
                   <div class="col-sm-2 col-lg-2 col-md-2 webdesign illustrator">
                       <div class="gal-detail thumb">
                           <a href="#sched{{$key->id}}" class="subSched" data-toggle="modal">
-                              <img class="pics" src="public/images/uploads/{{$key->profile_picture}}" class="thumb-img" alt="work-thumbnail" style="width:200px;height:200px;">
+                              <img class="pics" src="public/images/uploads/{{$key->profile_picture}}" class="thumb-img" alt="work-thumbnail" style="width:200px;">
                           </a>
-                          <h4>{{$key->teacher_FName}} {{$key->teacher_MName}} {{$key->teacher_LName}}</h4>
+                          <h4 style="text-align:center;">{{$key->teacher_FName}} {{$key->teacher_MName}} {{$key->teacher_LName}}</h4>
                       </div>
                   </div>
                 </div>
@@ -88,7 +88,10 @@
                           <div class="col-md-4">
                               <div class="form-group">
                                   <label for="subject_type" class="control-label">Subject Type</label>
-                                  <input type="text" class="form-control" id="subject_type" name="subject_type">
+                                  <select id="subject_type" class="form-control form-white" data-placeholder="Choose a color..." name="subject_type">
+                                    <option value="Lecture">Lecture</option>
+                                    <option value="Lecture and Laboratory">Lecture and Laboratory</option>
+                                  </select>
                               </div>
                           </div>
                           <div class="col-md-4">
@@ -100,7 +103,11 @@
                           <div class="col-md-4">
                               <div class="form-group">
                                   <label for="day" class="control-label">Day</label>
-                                  <input type="text" class="form-control" id="day" name="day">
+                                  <!-- <input type="text" class="form-control" id="day" name="day"> -->
+                                  <select id="day" class="form-control form-white" data-placeholder="Choose a color..." name="day">
+                                    <option value="Tue - Thu">Tue - Thu</option>
+                                    <option value="Wed - Fri">Wed - Fri</option>
+                                  </select>
                               </div>
                           </div>
                         </div>

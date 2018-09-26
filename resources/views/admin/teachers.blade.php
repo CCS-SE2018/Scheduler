@@ -74,7 +74,7 @@
                                 <div class="form-group">
                                   <div class="avatar-upload">
                                       <div class="avatar-edit">
-                                          <input type='file' name="profile_picture" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                          <input type='file' name="profile_picture" id="imageUpload" accept=".png, .jpg" />
                                           <label for="imageUpload"></label>
                                       </div>
                                       <div class="avatar-preview">
@@ -120,7 +120,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4 class="modal-title">Rooms</h4>
+                            <h4 class="modal-title">Delete Teacher</h4>
                         </div>
                         <div class="modal-body">
                             <form id="roomForm" action="{{url('/teacher')}}" method="post" enctype="multipart/form-data">
@@ -134,7 +134,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type='hidden' class='editMode' name='editMode' value=''/>
+                                <input type='hidden' class='delMode' name='editMode' value=''/>
                                 <input type='hidden' class="del" name='editID' value=""/>
                             </form>
                         </div>

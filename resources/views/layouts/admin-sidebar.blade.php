@@ -11,7 +11,7 @@
                 <div class="dropdown">
                     <p class="dropdown-toggle">{{Auth::user()->instructor}}</p>
                 </div>
-                  <p class="text-muted m-0">Instructor</p>
+                  <p class="text-muted m-0">Secretary</p>
             </div>
         </div>
         <!--- Divider -->

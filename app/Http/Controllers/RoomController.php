@@ -26,7 +26,7 @@ class RoomController extends Controller
       $subjects = DB::table('subjects')
       ->join('rooms', 'subjects.room_location', '=', 'rooms.id')
       ->join('teachers', 'subjects.instructor', '=', 'teachers.id')
-      ->select('subjects.subject_code', 'rooms.room_location', 'teachers.teacher_FName','subjects.schedule_time')
+      ->select('subjects.subject_code', 'rooms.room_location', 'teachers.teacher_FName','teachers.teacher_MName','teachers.teacher_LName','subjects.schedule_time')
       ->get();
       return view('admin.roomsAssignment',compact('rooms','subjects','teachers'));
     }

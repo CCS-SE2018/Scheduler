@@ -32,7 +32,10 @@
                       <div class="col-md-4">
                           <div class="form-group">
                               <label for="subject_type" class="control-label">Subject Type</label>
-                              <input type="text" class="form-control" id="subject_type{{$key->id}}" name="subject_type">
+                              <select id="subject_type{{$key->id}}" class="form-control form-white" data-placeholder="Choose a color..." name="subject_type">
+                                <option value="Lecture">Lecture</option>
+                                <option value="Lecture and Laboratory">Lecture and Laboratory</option>
+                              </select>
                           </div>
                       </div>
                       <div class="col-md-4">
@@ -44,7 +47,10 @@
                       <div class="col-md-4">
                           <div class="form-group">
                               <label for="day" class="control-label">Day</label>
-                              <input type="text" class="form-control" id="day{{$key->id}}" name="day">
+                              <select id="day{{$key->id}}" class="form-control form-white" data-placeholder="Choose a color..." name="day">
+                                <option value="Tue - Thu">Tue - Thu</option>
+                                <option value="Wed - Fri">Wed - Fri</option>
+                              </select>
                           </div>
                       </div>
                     </div>

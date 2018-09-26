@@ -12,15 +12,16 @@ class SubjectController extends Controller
 {
     public function subject(Request $request){
       Session::put('instructor',$request['teacher']);
+      // dd($request);
       if($request['mode'] == 'edit'){
         Subject::where('id',$request['subject'])->update([
           'subject_code' => $request['values'][0],
           'subject_name' => $request['values'][1],
           'section' => $request['values'][2],
-          'subject_type' => $request['values'][3],
-          'units' => $request['values'][4],
-          'schedule_day' => $request['values'][5],
-          'schedule_time' => $request['values'][6],
+          'subject_type' => $request['subject_type'],
+          'units' => $request['values'][3],
+          'schedule_day' => $request['day'],
+          'schedule_time' => $request['values'][4],
           'instructor' => $request['teacher'],
           'room_location' => $request['room'],
         ]);
@@ -33,10 +34,10 @@ class SubjectController extends Controller
           'subject_code' => $request['values'][0],
           'subject_name' => $request['values'][1],
           'section' => $request['values'][2],
-          'subject_type' => $request['values'][3],
-          'units' => $request['values'][4],
-          'schedule_day' => $request['values'][5],
-          'schedule_time' => $request['values'][6],
+          'subject_type' => $request['subject_type'],
+          'units' => $request['values'][3],
+          'schedule_day' => $request['day'],
+          'schedule_time' => $request['values'][4],
           'room_location' => $request['room'],
           'instructor' => $request['teacher'],
         ]);
