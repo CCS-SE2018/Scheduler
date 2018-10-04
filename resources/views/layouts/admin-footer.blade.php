@@ -111,11 +111,13 @@
                paging: false,
                searching: false,
                info: false,
+               ordering: false,
              });
 
              $("#click"+v).click(function(){
                count = 0;
                $("#addSchedule").find("input[type=text], input[type=number]").val("");
+               $("#units").val(3);
              });
            }
 
@@ -125,6 +127,7 @@
                 var table = $(this).attr('data-rel').split('|')[1];
                 v = table;
                 var subject = $(this).attr('data-rel').split('|')[0];
+                var room = $(this).attr('data-rel').split('|')[2];
                 var teacher = $("#teacherSched"+table).DataTable();
                 var data = teacher.row($(this).parents('tr')).data();
                 $('#subject_code'+subject).val(data[0]);
@@ -134,7 +137,7 @@
                 $('#units'+subject).val(data[4]);
                 $('#day'+subject).val(data[5]);
                 $('#time'+subject).val(data[6]);
-                $('#room'+subject).val(data[7]);
+                $('#room'+subject).val(room);
                 $("#mode"+subject).val("edit");
                 $("#ID"+subject).val(subject);
               });

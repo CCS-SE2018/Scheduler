@@ -50,12 +50,12 @@ class SubjectController extends Controller
 
     public function updateSubjects(){
       $teacher = Session::get('instructor');
-      $subjects = Subject::where('instructor',Session::get('instructor'))->get();
+      $subjects = Subject::select('subjects.id','subject_code','subject_name','section','subject_type','units','schedule_day','schedule_time','rooms.room_location as Room','rooms.id as RoomID')->join('rooms','subjects.room_location','=','rooms.id')->where('instructor',Session::get('instructor'))->get();
       return view('admin.table',compact('subjects','teacher'));
     }
 
     public function loadSubjects(){
-      $subjects = Subject::where('instructor',Session::get('instructor'))->get();
+      $subjects = Subject::select('subjects.id','subject_code','subject_name','section','subject_type','units','schedule_day','schedule_time','rooms.room_location as Room')->join('rooms','subjects.room_location','=','rooms.id')->where('instructor',Session::get('instructor'))->get();
       $rooms = Room::all();
       return view('admin.subjectModals',compact("subjects","rooms"));
     }

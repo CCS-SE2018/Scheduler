@@ -27,6 +27,11 @@
                                     </div>
                                 </div>
                                 <div id="printRoom">
+                                  <div class="row">
+                                      <div class="col-sm-12">
+                                          <h1 style="text-align:center;">Rooms Assignment</h1>
+                                      </div>
+                                  </div>
                                 @foreach($rooms as $key)
                                     <table class="table table-bordered datatable table-striped">
                                         <h3>{{$key->room_location}}</h3>
@@ -59,7 +64,6 @@
                             <!-- end: page -->
 
                         </div> <!-- end Panel -->
-
                     </div> <!-- container -->
 
                 </div> <!-- content -->

@@ -41,7 +41,7 @@
                       <div class="col-md-4">
                           <div class="form-group">
                               <label for="units" class="control-label">Units</label>
-                              <input type="number" class="form-control" id="units{{$key->id}}" name="units" min="3" max="3">
+                              <input type="number" class="form-control" id="units{{$key->id}}" name="units" min="3" max="3" readonly>
                           </div>
                       </div>
                       <div class="col-md-4">

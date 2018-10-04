@@ -1,8 +1,8 @@
 <!-- ========== Left Sidebar Start ========== -->
 <?php
-    $urls = ["/","/rooms","/teachers","/archive"];
-    $classes = ["md md-home","md md-my-library-books","md md-face-unlock"," ion-ios7-box-outline"];
-    $desc = ["Subjects","Rooms","Teachers","Archive"];
+    $urls = ["/","/rooms","/teachers"];
+    $classes = ["md md-home","md md-my-library-books","md md-face-unlock"];
+    $desc = ["Subjects","Rooms","Teachers"];
 ?>
 <div class="left side-menu">
     <div class="sidebar-inner slimscrollleft">
@@ -17,7 +17,7 @@
         <!--- Divider -->
         <div id="sidebar-menu">
             <ul>
-                <?php $i; for($i = 0;$i < 4;$i++){
+                <?php $i; for($i = 0;$i < 3;$i++){
                     if($i == 0){?>
                   <li class="has_sub">
                     <a class="waves-effect"><i class="<?=$classes[$i];?>"></i><span> Dashboard </span></a>

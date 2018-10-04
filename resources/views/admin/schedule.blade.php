@@ -16,7 +16,7 @@
                   <div class="col-sm-2 col-lg-2 col-md-2 webdesign illustrator">
                       <div class="gal-detail thumb">
                           <a href="#sched{{$key->id}}" class="subSched" data-toggle="modal">
-                              <img class="pics" src="public/images/uploads/{{$key->profile_picture}}" class="thumb-img" alt="work-thumbnail" style="width:200px;">
+                              <img class="pics" src="public/images/uploads/{{$key->profile_picture}}" class="thumb-img" alt="work-thumbnail" style="width:100%;">
                           </a>
                           <h4 style="text-align:center;">{{$key->teacher_FName}} {{$key->teacher_MName}} {{$key->teacher_LName}}</h4>
                       </div>
@@ -45,6 +45,7 @@
                     <div class="panel">
                         <div class="panel-body">
                             <div id="initSched{{$key->id}}" class="notaschedule">
+
                             </div>
                         </div>
                     </div>
@@ -97,13 +98,12 @@
                           <div class="col-md-4">
                               <div class="form-group">
                                   <label for="units" class="control-label">Units</label>
-                                  <input type="number" class="form-control" id="units" name="units" min="3" max="3">
+                                  <input type="number" class="form-control" id="units" name="units" min="3" max="3" readonly>
                               </div>
                           </div>
                           <div class="col-md-4">
                               <div class="form-group">
                                   <label for="day" class="control-label">Day</label>
-                                  <!-- <input type="text" class="form-control" id="day" name="day"> -->
                                   <select id="day" class="form-control form-white" data-placeholder="Choose a color..." name="day">
                                     <option value="Tue - Thu">Tue - Thu</option>
                                     <option value="Wed - Fri">Wed - Fri</option>
