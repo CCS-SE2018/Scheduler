@@ -39,7 +39,7 @@
                                           <td>{{$key->room_location}}</td>
                                           <td class="actions">
                                             <a class="edit" data-rel="{{$key->id}}" data-toggle="modal" data-target="#roomModal" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a class="delete" data-rel="{{$key->id}}" data-toggle="modal" data-target="#deleteRoomModal" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                            <!-- <a class="delete" data-rel="{{$key->id}}" data-toggle="modal" data-target="#deleteRoomModal" class="on-default remove-row"><i class="fa fa-trash-o"></i></a> -->
                                           </td>
                                         </tr>
                                         @endforeach
