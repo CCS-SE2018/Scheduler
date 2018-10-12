@@ -39,7 +39,7 @@
                   <div id="print{{$key->id}}">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h4 class="pull-left page-title">{{$key->teacher_FName}} {{$key->teacher_MName}} {{$key->teacher_LName}}'s Subjects</h4>
+                            <h4 class="page-title" style="text-align:center;">{{$key->teacher_FName}} {{$key->teacher_MName}} {{$key->teacher_LName}}'s Subjects</h4>
                         </div>
                     </div>
                     <div class="panel">

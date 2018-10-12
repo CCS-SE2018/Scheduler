@@ -26,7 +26,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="printRoom">
+                                <div id="printRoom" style="width: 100%;">
                                   <div class="row">
                                       <div class="col-sm-12">
                                           <h1 style="text-align:center;">Rooms Assignment</h1>
